@@ -1,0 +1,17 @@
+.movie__list {
+    width: 100%;
+    height: calc(100vh - 80px);
+    padding: 0 3rem;
+
+    .movie__title {
+        font-size: 1.75rem;
+        margin: 2.5rem;
+    }
+
+    .movie__card {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+}
