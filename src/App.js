@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, BrowserRouter } from "react-router-dom";
 
-import { Header, MovieList } from './components';
+import { Header } from './components';
 import { Home, Movie } from './pages';
 
 import './index.css'
@@ -14,7 +14,8 @@ const App = () => {
                     <Routes>
                         <Route index element={<Home />}></Route>
                         <Route path="movie/:id" element={<Movie />}></Route>
-                        <Route path="movies/:type" element={<MovieList />}></Route>
+                        <Route path="movies/:type" element={<Home />}></Route>
+                        <Route path="movies/:searchTerm" element={<Home />}></Route>
                         <Route path="/*" element={<h1>Error Page</h1>}></Route>
                     </Routes>
                 </Router>

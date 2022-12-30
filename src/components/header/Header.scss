@@ -13,16 +13,53 @@
 
     z-index: 1;
 
-    .header__left,
-    .header__right {
+    .header__left {
+        width: 100%;
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: space-between;
 
         .header__links {
             display: flex;
             align-items: center;
             justify-content: center;
+
+            .search {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                padding: 0.5rem;
+                border-radius: 1rem;
+                background: #1f2123;
+                -webkit-box-shadow: 5px 5px 7px #1c1d1f, -5px -5px 7px #222527;
+                box-shadow: 5px 5px 7px #1c1d1f, -5px -5px 7px #222527;
+
+                input {
+                    width: 75%;
+
+                    flex: 1;
+                    border: none;
+                    font-size: 1rem;
+                    font-family: var(--font-raleway);
+                    font-weight: 500;
+                    padding-right: 0.5rem;
+
+                    outline: none;
+                    color: #a1a1a1;
+                    background: #1f2123;
+                }
+
+                .search__icon {
+                    width: 25px;
+                    height: 25px;
+                    cursor: pointer;
+                }
+
+                @media screen and (max-width: 600px) {
+                    display: none;
+                }
+            }
         }
 
         .header__icon {
@@ -51,36 +88,43 @@
         }
 
         @media screen and (max-width: 600px) {
-            .header__links{
+            .header__links {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-        
+
                 width: 100%;
                 height: 100vh;
-        
+
                 background: rgba($color: #000000, $alpha: 0.9);
-        
+
                 position: absolute;
                 top: 0;
-                left: -100%;
-        
+                right: -100%;
+
                 z-index: -3;
-        
+
                 transition: 0.3s;
 
-                .header__item{
+                .header__item {
                     margin: 1rem 0;
                 }
+
             }
 
-            .header__links.active{
-                left: 0;
+            .header__links.active {
+                right: 0;
             }
-        }
+        }        
+    }
+
+    .header__right {
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
         @media screen and (min-width: 601px) {
-            .header__menu{
+            .header__menu {
                 display: none;
             }
         }

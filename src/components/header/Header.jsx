@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-import { FaBars, FaTimes } from 'react-icons/fa'
+import { BiSearch } from 'react-icons/bi';
+import { FaBars, FaTimes } from 'react-icons/fa';
 
 import { Images } from '../../constants';
 
@@ -10,6 +11,20 @@ import './Header.scss';
 const Header = () => {
   const [Clicked, setClciked] = useState(false);
   const handleClicked = () => setClciked(!Clicked);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const navigate = useNavigate();
+
+  const SearchMovies = () => {
+    navigate("/movie/" + { searchTerm });
+  }
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      navigate("/movie/" + { searchTerm });
+    }
+  }
 
   return (
     <div className="header">
@@ -23,6 +38,15 @@ const Header = () => {
               <Link to={`/movies/${item}`} className="header__item" onClick={handleClicked}><span>{item.toUpperCase()}</span></Link>
             </>
           ))}
+          <div className="search">
+            <input
+              value={searchTerm}
+              onChange={(event) => setSearchTerm(event.target.value)}
+              onKeyDown={(event) => handleKeyDown(event)}
+              placeholder="Search for movies"
+            />
+            <BiSearch className="search__icon" onClick={() => SearchMovies()} />
+          </div>
         </div>
       </div>
       <div className="header__right">
@@ -30,22 +54,6 @@ const Header = () => {
           {Clicked ? <FaTimes /> : <FaBars />}
         </div>
       </div>
-      {/* <div className="header__left">
-        <Link to="/" className="header__item">
-          <img className="header__icon" src={Images.Logo} />
-        </Link>
-        <ul className={Clicked ? "header__item" : "header__item"}>
-          {['popular', 'top_rated', 'upcoming'].map((item) => (
-            <li className="app__flex p-text" key={`link-${item}`}>
-              <div />
-              <Link to={`/movies/${item}`} className="header__item"><span>{item.toUpperCase()}</span></Link>
-            </li>
-          ))}
-        </ul>
-        <div className="header-menu" onClick={handleClicked}>
-          {Clicked ? <FaTimes /> : <FaBars />}
-        </div>
-      </div> */}
     </div>
   )
 }

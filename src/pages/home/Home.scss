@@ -1,4 +1,87 @@
 .home__container {
     width: 100%;
-    height: calc(100vh - 80px);
+    height: 100%;
+
+    .movie__container {
+        width: 100%;
+        height: 100%;
+
+        padding-top: 80px;
+
+        .movie__list {
+            width: 100%;
+            height: 100%;
+
+            padding: 0 1rem;
+
+            .movie__title {
+                font-size: 1.75rem;
+                margin: 2.5rem;
+            }
+
+            .movie__card {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+
+                padding-top: 1rem;
+            }
+
+            .movie__top {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                .search {
+                    width: 50%;
+
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    padding: 0.8rem;
+                    border-radius: 1rem;
+                    background: #1f2123;
+                    -webkit-box-shadow: 5px 5px 7px #1c1d1f, -5px -5px 7px #222527;
+                    box-shadow: 5px 5px 7px #1c1d1f, -5px -5px 7px #222527;
+
+                    input {
+                        width: 75%;
+
+                        flex: 1;
+                        border: none;
+                        font-size: 1rem;
+                        font-family: var(--font-raleway);
+                        font-weight: 500;
+                        padding-right: 0.5rem;
+
+                        outline: none;
+                        color: #a1a1a1;
+                        background: #1f2123;
+                    }
+
+                    .search__icon {
+                        width: 25px;
+                        height: 25px;
+                        cursor: pointer;
+                    }
+
+                    @media screen and (min-width:601px) {
+                        display: none;
+                    }
+
+                    @media screen and (max-width:450px) {
+                        width: 100%;
+                        
+                    }
+                }
+
+                @media screen and (max-width:450px) {
+                    display: flex;
+                    flex-direction: column-reverse;
+                }
+            }
+        }
+    }
 }

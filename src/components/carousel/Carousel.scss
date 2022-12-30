@@ -4,11 +4,11 @@
     flex-wrap: nowrap;
     overflow: hidden;
     scroll-behavior: smooth;
-    height: 20rem;
+    height: 300px;
     width: 100%;
 
     .carousel__item {
-        height: 20rem;
+        height: 300px;
         min-width: 100%;
         width: 100%;
 
@@ -71,5 +71,17 @@
             }
 
         }
+
+        @media screen and (max-width:900px) {
+            height: 200px;
+        }
+    }
+
+    @media screen and (max-width:900px) {
+        height: 200px;
+    }
+
+    @media screen and (max-width:600px) {
+        display: none;
     }
 }
