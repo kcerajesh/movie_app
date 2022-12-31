@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { MovieList, Carousel, Card, Spinner } from '../../components';
+import { Carousel, Card, Spinner } from '../../components';
 
 import { BiSearch } from 'react-icons/bi';
 
@@ -27,7 +27,8 @@ const Home = () => {
     }, [type]);
 
     useEffect(() => {
-        SearchMoviesByName()
+        if (searchTerm || searchText)
+            SearchMoviesByName()
     }, [searchText]);
 
     const SearchMoviesByType = async () => {

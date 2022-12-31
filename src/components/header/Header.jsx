@@ -13,7 +13,9 @@ const Header = () => {
   const handleClicked = () => setClciked(!Clicked);
   const [searchText, setSearchText] = useState("");
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+
+  const movieLinks = ['popular', 'top_rated', 'upcoming'];
 
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
@@ -25,11 +27,11 @@ const Header = () => {
   return (
     <div className="header">
       <div className="header__left">
-        <Link to="/" className="header__item">
+        <Link to={`/movies/${movieLinks[0]}`} className="header__item">
           <img className="header__icon" src={Images.Logo} />
         </Link>
         <div className={Clicked ? "header__links active" : "header__links"}>
-          {['popular', 'top_rated', 'upcoming'].map((item) => (
+          {movieLinks.map((item) => (
             <>
               <Link to={`/movies/${item}`} className="header__item" onClick={handleClicked}><span>{item.toUpperCase()}</span></Link>
             </>
