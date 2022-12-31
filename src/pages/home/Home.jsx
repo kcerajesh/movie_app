@@ -16,7 +16,7 @@ const Home = () => {
     const [title, setTitle] = useState("");
 
     const { type } = useParams();
-    const { name } = useParams();
+    const { searchText } = useParams();
 
     useEffect(() => {
         SearchMoviesByType("");
@@ -26,7 +26,11 @@ const Home = () => {
         SearchMoviesByType()
     }, [type]);
 
-    const SearchMoviesByType = async () => {       
+    useEffect(() => {
+        SearchMoviesByName()
+    }, [searchText]);
+
+    const SearchMoviesByType = async () => {
         setLoading(true);
         const movieList = await API.SearchMoviesByType(type);
         if (movieList && movieList.length > 0) {
@@ -37,9 +41,9 @@ const Home = () => {
         }
     }
 
-    const SearchMoviesByName = async (name) => {
+    const SearchMoviesByName = async () => {
         setLoading(true);
-        const movieList = await API.SearchMoviesByName(name);
+        const movieList = await API.SearchMoviesByName(searchTerm ? searchTerm : searchText);
         if (movieList && movieList.length > 0) {
             setTitle("Search");
             setLoading(false);

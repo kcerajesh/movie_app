@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, Navigate } from "react-router-dom";
 
 import { BiSearch } from 'react-icons/bi';
 import { FaBars, FaTimes } from 'react-icons/fa';
@@ -11,18 +11,14 @@ import './Header.scss';
 const Header = () => {
   const [Clicked, setClciked] = useState(false);
   const handleClicked = () => setClciked(!Clicked);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchText, setSearchText] = useState("");
 
-  const navigate = useNavigate();
-
-  const SearchMovies = () => {
-    navigate("/movie/" + { searchTerm });
-  }
+  const navigate = useNavigate()
 
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
       event.preventDefault();
-      navigate("/movie/" + { searchTerm });
+      navigate("/" + searchText);
     }
   }
 
@@ -40,12 +36,12 @@ const Header = () => {
           ))}
           <div className="search">
             <input
-              value={searchTerm}
-              onChange={(event) => setSearchTerm(event.target.value)}
+              value={searchText}
+              onChange={(event) => setSearchText(event.target.value)}
               onKeyDown={(event) => handleKeyDown(event)}
               placeholder="Search for movies"
             />
-            <BiSearch className="search__icon" onClick={() => SearchMovies()} />
+            <BiSearch className="search__icon" onClick={() => navigate("/" + searchText)} />
           </div>
         </div>
       </div>

@@ -13,9 +13,10 @@ const App = () => {
                     <Header />
                     <Routes>
                         <Route index element={<Home />}></Route>
+                        <Route path="/" element={<Home />}></Route>
                         <Route path="movie/:id" element={<Movie />}></Route>
                         <Route path="movies/:type" element={<Home />}></Route>
-                        <Route path="movies/:searchTerm" element={<Home />}></Route>
+                        <Route path="/:searchText" element={<Home />}></Route>
                         <Route path="/*" element={<h1>Error Page</h1>}></Route>
                     </Routes>
                 </Router>
